@@ -77,4 +77,6 @@
   
   <ChildComponent v-on:response="(msg) => childMsg = msg"/>
   <p>{{ childMsg }}</p>
+
+  <ChildComponent>Message : {{childMsg}}</ChildComponent>
 </template>

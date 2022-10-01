@@ -11,5 +11,5 @@
 </script>
 <template>
     <h2>{{ msg || 'No data' }}</h2>
-    
+    <slot>--Fallback content--</slot>
 </template>
