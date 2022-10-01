@@ -1,4 +1,6 @@
 <script>
+  import ChildComponent from './ChildComponent.vue'
+
   export default{
     data(){
       return {
@@ -11,11 +13,16 @@
           {id:2, data:"yeah 2"},
           {id:3, data:"yeah 3"}
         ],
-        onlyFirstSomeList: false
+        onlyFirstSomeList: false,
+        msgToChild:"Child works",
+        childMsg:'No Child msg'
       }
     }, 
     mounted(){
       this.$refs.p.textContent = "bye"
+    },
+    components:{
+      ChildComponent
     },
     computed:{
       updateSomeList(){
@@ -25,7 +32,9 @@
       }
     },
     watch:{
-      
+      onlyFirstSomeList(){
+        console.log("Triggers");
+      }
     },
     methods:{
       increment(){
@@ -64,4 +73,8 @@
 
   <p ref="p">Good</p>
 
+  <ChildComponent v-bind:msg="msgToChild"/>
+  
+  <ChildComponent v-on:response="(msg) => childMsg = msg"/>
+  <p>{{ childMsg }}</p>
 </template>
